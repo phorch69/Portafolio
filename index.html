@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="style.css">
+		<link rel="icon" type="image/svg+xml" href="/Icons/App.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>6P9</title>
+	</head>
+	<body>
+		<section id="Home" class="h-screen w-screen">
+		<header class="[grid-area:Header] flex flex-row justify-between p-3">
+			<div class="flex flex-row space-x-7">
+			<button>
+				<img src="/Icons/Menu.svg" alt="Menu" width="30">
+			</button>
+			<img src="Icons/Person.svg" alt="About My" width="30" />  
+			</div>
+			<div class="space-x-3">
+			<button>
+				<img src="Icons/Github.svg" alt="Github" width="30"/>
+			</button>
+			<button>
+				<img src="/Icons/Linkedin.svg" alt="Linkedin" width="30"/>
+			</button>
+			<button>
+				<img src="/Icons/Youtube.svg" alt="Youtube" width="30"/>
+			</button>
+			</div>
+		</header>
+		<aside class="[grid-area:Aside] flex flex-col justify-around p-3">
+			<button>
+			<img src="/Icons/Home.svg" alt="Home" width="30"/>
+			</button>
+			<button>
+			<img src="/Icons/Person.svg" alt="My" width="30"/>
+			</button>
+			<button>
+			<img src="/Icons/Config.svg" alt="Config" width="30"/>
+			</button>
+		</aside>
+		<main class="[grid-area:Main]">
+		</main>
+		</section>
+		<script type="module" src="/src/main.js"></script>
+	</body>
+</html>
+<style is:global>
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+*{
+		box-sizing: border-box;
+		margin: 0%;
+		padding: 0%;
+	}
+	::-webkit-scrollbar {
+		background: transparent;
+	}
+	::-webkit-scrollbar-thumb {
+		background: #fdfdfd;
+	}
+	::-webkit-scrollbar-thumb:hover {
+		background: #45474b;
+		cursor: url("/Icons/Point.svg"),auto;
+		pointer-events: auto;
+	}
+	html {
+		font-family: system-ui, sans-serif;
+		background: #13151a;
+		background-size: 224px;
+		cursor: url("/Icons/Cursor.svg"),auto;
+	}
+	a,button,form,::-webkit-scrollbar-thumb{
+		pointer-events: auto;
+	}
+	a {
+		text-decoration: none;
+		color: white;
+	}
+	a:hover {
+		cursor: url("/Icons/Point.svg"),auto;
+	}
+	li {
+		list-style-type: none;
+	}
+	hr {
+		width: 100%;
+		background: rgb(43, 43, 43) ;
+		border-color: transparent;
+		margin-block: 3% 3%;
+	}
+	form:hover {
+		cursor: url("/Icons/Point.svg"),auto;
+	}
+	button {
+		background: transparent;
+		border: transparent;
+	}
+	button:hover {
+		cursor: url("/Icons/Point.svg"),auto;
+		animation: pulse 1s infinite;
+		filter: drop-shadow(1px 1px 5px rgba(226, 223, 223, 0.684));
+	}
+	/*.Img:hover {
+		animation: pulse 1s infinite;
+		filter: drop-shadow(1px 1px 5px rgba(226, 223, 223, 0.684));
+	}*/
+	@keyframes pulse {
+		0%,100%{
+			transform: scale(1);
+		}
+		50% {
+			transform: scale(1.2);
+		}
+	}
+</style>

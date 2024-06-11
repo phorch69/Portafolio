@@ -9,38 +9,53 @@
 	</head>
 	<body>
 		<section id="Home" class="h-screen w-screen">
-		<header class="[grid-area:Header] flex flex-row justify-between p-3">
-			<div class="flex flex-row space-x-7">
-			<button>
-				<img src="/Icons/Menu.svg" alt="Menu" width="30">
-			</button>
-			<img src="Icons/Person.svg" alt="About My" width="30" />  
-			</div>
-			<div class="space-x-3">
-			<button>
-				<img src="Icons/Github.svg" alt="Github" width="30"/>
-			</button>
-			<button>
-				<img src="/Icons/Linkedin.svg" alt="Linkedin" width="30"/>
-			</button>
-			<button>
-				<img src="/Icons/Youtube.svg" alt="Youtube" width="30"/>
-			</button>
-			</div>
-		</header>
-		<aside class="[grid-area:Aside] flex flex-col justify-around p-3">
-			<button>
-			<img src="/Icons/Home.svg" alt="Home" width="30"/>
-			</button>
-			<button>
-			<img src="/Icons/Person.svg" alt="My" width="30"/>
-			</button>
-			<button>
-			<img src="/Icons/Config.svg" alt="Config" width="30"/>
-			</button>
-		</aside>
-		<main class="[grid-area:Main]">
-		</main>
+			<header class="[grid-area:Header] flex flex-row justify-between p-3">
+				<div class="flex flex-row space-x-7">
+				<img src="Icons/Person.svg" alt="About My" width="30" />  
+				</div>
+				<div class="space-x-3">
+				<button>
+					<img src="Icons/Github.svg" alt="Github" width="30"/>
+				</button>
+				<button>
+					<img src="/Icons/Linkedin.svg" alt="Linkedin" width="30"/>
+				</button>
+				<button>
+					<img src="/Icons/Youtube.svg" alt="Youtube" width="30"/>
+				</button>
+				</div>
+			</header>
+			<footer class="[grid-area:Footer] flex flex-row justify-around p-3">
+				<button>
+				<img src="/Icons/Home.svg" alt="Home" width="30"/>
+				</button>
+				<button>
+				<img src="/Icons/Person.svg" alt="My" width="30"/>
+				</button>
+				<button>
+				<img src="/Icons/Config.svg" alt="Config" width="30"/>
+				</button>
+			</footer>
+			<main class="[grid-area:Main]">
+				<section id="Main">
+					<div class="flex flex-col text-2xl text-center space-y-6 p-3">
+						<img class="self-center" src="/Icons/Smile.svg" alt="" width="60">
+						<p class="">
+							Bienvenidos a Todos
+							<br/>
+							Soy un estudiante de Ingenieria Informatica y 2022 fue mi comienzo en la programacion por lo que acá podran ver mis proyectos o tambien ver y seguirme en mis redes sociales
+						</p>	
+					</div>
+					<div class="Conjunto">
+						<img class="Object img1" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/30px-Unofficial_JavaScript_logo_2.svg.png" alt="">
+						<img class="Object img2" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/30px-Python-logo-notext.svg.png" alt="">
+						<img class="Object img3" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Git_icon.svg/30px-Git_icon.svg.png" alt="">
+						<img class="Object img4" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vitejs-logo.svg/30px-Vitejs-logo.svg.png" alt="">
+						<img class="Object img5" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Three.js_Icon.svg/30px-Three.js_Icon.svg.png" alt="">
+						<img class="Object img6" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/30px-Tailwind_CSS_Logo.svg.png" alt="">
+					</div>
+				</section>
+			</main>
 		</section>
 		<script type="module" src="/src/main.js"></script>
 	</body>
@@ -99,19 +114,6 @@
 	}
 	button:hover {
 		cursor: url("/Icons/Point.svg"),auto;
-		animation: pulse 1s infinite;
 		filter: drop-shadow(1px 1px 5px rgba(226, 223, 223, 0.684));
-	}
-	/*.Img:hover {
-		animation: pulse 1s infinite;
-		filter: drop-shadow(1px 1px 5px rgba(226, 223, 223, 0.684));
-	}*/
-	@keyframes pulse {
-		0%,100%{
-			transform: scale(1);
-		}
-		50% {
-			transform: scale(1.2);
-		}
 	}
 </style>

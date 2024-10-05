@@ -11,11 +11,11 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 //import { EXRLoader } from 'three/addons/loaders/EXRLoader.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 import { Water } from 'three/addons/objects/Water.js';
-import { Sky } from 'three/addons/objects/Sky.js';
+//import { Sky } from 'three/addons/objects/Sky.js';
 
 let camera, container, scene, renderer, stats, controls;
 let DracoLoader, Loader, Models, HDRLoader, HDR;
-let zoom, Clock, water;
+let zoom, Clock, water, Manager, ProgresBar, Load, Start;
 let cube, light, mesh;
 
 init ();
@@ -31,6 +31,7 @@ function init() {
 	camera.position.y = 50;
 	camera.position.x = 50;
 
+	LoadingManager();
 	//Objetos3d();
 	Ilumination();
 	Loader3d();
@@ -56,13 +57,13 @@ function render() {
 	renderer.shadowMap.enabled = true;
 	renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
-	container.appendChild( stats.dom );
+	//container.appendChild( stats.dom );
 }
 
 //Movimiento de la camara con mouse
 function Zoom() {
 	zoom = new OrbitControls(camera, renderer.domElement);
-	zoom.autoRotate = false;
+	zoom.autoRotate = true;
 	zoom.zoomSpeed = 3;
 	zoom.minDistance = 7;
 	zoom.maxDistance = 55;
@@ -86,7 +87,7 @@ function Background() {
 	//HDRLoader = new RGBELoader();
     //HDRLoader.setDataType( THREE.FloatType );
 	//HDRLoader.setDataType( THREE[ HalfFloatType ] );
-    new RGBELoader().load( '/models/HDRs/Cielo.hdr', ( environmentMap ) => {
+    new RGBELoader(Manager).load( '/models/HDRs/Cielo.hdr', ( environmentMap ) => {
 
         environmentMap.mapping = THREE.EquirectangularReflectionMapping;
 		//environmentMap.needsUpdate = true;
@@ -117,7 +118,7 @@ function Oceano() {
 
 	water.rotation.x = - Math.PI / 2;
 
-	water.material.uniforms['time'].value += 0.01;
+	//water.material.uniforms['time'].value += 0.01;
 
 	scene.add( water );
 }
@@ -130,6 +131,30 @@ function Objetos3d () {
 	scene.add( cube );
 }
 
+function LoadingManager() {
+	Manager = new THREE.LoadingManager();
+	ProgresBar = document.getElementById('progress-bar');
+	Load = document.querySelector('.Load');
+	Start = document.querySelector('.Start');
+
+	Manager.onStart = function ( item, loaded, total ) {
+        Start.style.display = 'none';
+    };
+
+    Manager.onProgress = function ( item, loaded, total ) {
+        ProgresBar.value = ( loaded / total ) * 100 ;
+    };
+
+	Manager.onLoad = function () {
+        Load.style.display = 'none';
+		Start.style.display = 'block';
+    };
+
+    //Manager.onError = function () {
+    //    console.error( 'Started loading: ' );
+    //};
+}
+
 function Loader3d () {
 	//DracoLoader = new DRACOLoader();
 	//DracoLoader.setDecoderPath( 'https://www.gstatic.com/draco/versioned/decoders/1.5.7/' );
@@ -137,7 +162,7 @@ function Loader3d () {
 	DracoLoader.setDecoderConfiguration({type: 'js'});
 	Loader.setDRACOLoader(DracoLoader);*/
 
-	Loader = new GLTFLoader();
+	Loader = new GLTFLoader(Manager);
 	//Loader.setDRACOLoader( DracoLoader );
 	Loader.load( '/models/gltf/Cubo-Textura.gltf', function ( gltf ) {
 		Models = gltf.scene

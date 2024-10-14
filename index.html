@@ -3,17 +3,60 @@
     <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <link rel="stylesheet" href="./src/style.css">
+    <link rel="icon" type="image/svg+xml" href="/public/logo/Logo-Tranparente.png" />
+    <link rel="stylesheet" href="/index.css" type="text/css">
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@v0.169.0/build/three.module.js",
+                "three/addons/": "https://cdn.jsdelivr.net/npm/three@v0.169.0/examples/jsm/"
+            }
+        }
+    </script>
     <script type="module" src="./src/Component/three.js"></script>
-    <title>Home</title>
+    <!--<script type="module" src="/src/Component/main.js"></script>-->
+    <title>Inicio</title>
     </head>
     <body>
+        <div class="Load">
+            <label class="text-white" for="progress-bar">Cargando..</label>
+            <progress id="progress-bar" value="0" max="100"></progress>
+        </div>
+        <div class="Start">
+            <header class="Header">
+                <div>III</div>
+                <div class="Intro">
+                    <img src="/public/logo/Logo-Tranparente.png" alt="" height="50px">
+                    <p>phorch69</p>
+                </div>
+            </header>
+            <main></main>
+            <footer class="Footer">
+                <p>©2024. Todos los derechos reservados.</p>
+                <p>Versión Beta 1.0.0</p>
+                <div>
+                    <div>
+                        <p>
+                            <a href="#" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/GitHub_Invertocat_Logo.svg/40px-GitHub_Invertocat_Logo.svg.png" alt="GitHub"></a>
+                        </p>
+                        <p>
+                            <a href="#" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/LinkedIn_Logo_%28with_%C2%AE%29.svg/100px-LinkedIn_Logo_%28with_%C2%AE%29.svg.png" alt="LinkedIn"></a>
+                        </p>
+                        <p>
+                            <a href="#" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/40px-YouTube_full-color_icon_%282017%29.svg.png" alt="YouTube"></a>
+                        </p>
+                    </div>
+                    <div>
+                        <p>Desarrollado por <a href="https://www.linkedin.com/in/phorch69/">Matias S A (phorch69)</a></p>
+                        <p>Desarrollando en <a href="https://github.com/phorch69/Portafolio">Portfolio</a></p>
+                    </div>
+                    <div>
+                        <p>Desarrollado con <a href="https://vitejs.dev/">Vite.js</a></p>
+                        <p>Desarrollado con <a href="https://threejs.org/">Three.js</a></p>
+                    </div>
+                </div>
+            </footer>
+        </div>
         <div id="container"></div>
-    <!--<h1 id="Titulo" class="text-3xl font-bold underline">
-    Hello world!
-    </h1>
-    <div id="app"></div>
-    <script type="module" src="/src/Component/main.js"></script>-->
     </body>
 </html>

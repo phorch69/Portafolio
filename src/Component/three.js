@@ -89,7 +89,7 @@ function Background() {
 	//HDRLoader = new RGBELoader();
     //HDRLoader.setDataType( THREE.FloatType );
 	//HDRLoader.setDataType( THREE[ HalfFloatType ] );
-    new RGBELoader(Manager).load( './public/models/HDRs/Cielo.hdr', ( environmentMap ) => {
+    new RGBELoader(Manager).load( '/Portafolio/public/models/HDRs/Cielo.hdr', ( environmentMap ) => {
 
         environmentMap.mapping = THREE.EquirectangularReflectionMapping;
 		//environmentMap.needsUpdate = true;
@@ -105,7 +105,7 @@ function Oceano() {
 	water = new Water( waterGeometry, {
 						textureWidth: 512,
 						textureHeight: 512,
-						waterNormals: new THREE.TextureLoader().load( './public/models/Texturas/water.jpg', function ( texture ) {
+						waterNormals: new THREE.TextureLoader().load( '/Portafolio/public/models/Texturas/water.jpg', function ( texture ) {
 
 						texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
 
@@ -166,7 +166,7 @@ function Loader3d () {
 
 	Loader = new GLTFLoader(Manager);
 	Loader.setDRACOLoader( DracoLoader );
-	Loader.load( './public/models/gltf/Cubo-Textura.gltf', function ( gltf ) {
+	Loader.load( '/Portafolio/public/models/gltf/Cubo-Textura.gltf', function ( gltf ) {
 		Models = gltf.scene
 		Models.position.set( 0, 0.3, 0 );
 		Models.scale.set( 8, 0.1, 8 );

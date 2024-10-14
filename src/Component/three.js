@@ -1,4 +1,6 @@
 import * as THREE from 'three';
+//import * as THREE from "../node_modules/three/build/three.module.js";
+//import * as THREE from './path/to/three.module.js';
 //import { FontLoader } from 'three/addons/loaders/FontLoader.js';
 //import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 import Stats from 'three/addons/libs/stats.module.js';
@@ -6,7 +8,7 @@ import { FlyControls } from 'three/addons/controls/FlyControls.js';
 //import { FirstPersonControls } from 'three/addons/controls/FirstPersonControls.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-//import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 //import { UltraHDRLoader } from 'three/addons/loaders/UltraHDRLoader.js';
 //import { EXRLoader } from 'three/addons/loaders/EXRLoader.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
@@ -87,7 +89,7 @@ function Background() {
 	//HDRLoader = new RGBELoader();
     //HDRLoader.setDataType( THREE.FloatType );
 	//HDRLoader.setDataType( THREE[ HalfFloatType ] );
-    new RGBELoader(Manager).load( '/models/HDRs/Cielo.hdr', ( environmentMap ) => {
+    new RGBELoader(Manager).load( '/public/models/HDRs/Cielo.hdr', ( environmentMap ) => {
 
         environmentMap.mapping = THREE.EquirectangularReflectionMapping;
 		//environmentMap.needsUpdate = true;
@@ -103,7 +105,7 @@ function Oceano() {
 	water = new Water( waterGeometry, {
 						textureWidth: 512,
 						textureHeight: 512,
-						waterNormals: new THREE.TextureLoader().load( '/models/textures/Water.jpg', function ( texture ) {
+						waterNormals: new THREE.TextureLoader().load( '/public/models/Texturas/water.jpg', function ( texture ) {
 
 						texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
 
@@ -156,17 +158,17 @@ function LoadingManager() {
 }
 
 function Loader3d () {
-	//DracoLoader = new DRACOLoader();
-	//DracoLoader.setDecoderPath( 'https://www.gstatic.com/draco/versioned/decoders/1.5.7/' );
+	DracoLoader = new DRACOLoader();
+	DracoLoader.setDecoderPath( 'https://www.gstatic.com/draco/versioned/decoders/1.5.7/' );
 	/*Todavia no se que hace
 	DracoLoader.setDecoderConfiguration({type: 'js'});
 	Loader.setDRACOLoader(DracoLoader);*/
 
 	Loader = new GLTFLoader(Manager);
-	//Loader.setDRACOLoader( DracoLoader );
-	Loader.load( '/models/gltf/Cubo-Textura.gltf', function ( gltf ) {
+	Loader.setDRACOLoader( DracoLoader );
+	Loader.load( '/public/models/gltf/Cubo-Textura.gltf', function ( gltf ) {
 		Models = gltf.scene
-		Models.position.set( 0, 0, 0 );
+		Models.position.set( 0, 0.3, 0 );
 		Models.scale.set( 8, 0.1, 8 );
 		scene.add( Models );
 		//gltf.animations; // Array<THREE.AnimationClip>

@@ -2,36 +2,60 @@
 @tailwind components;
 @tailwind utilities;
 
+/* -- Glorbal -- */
+
+*{
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+}
+
 a {
   text-decoration: none;
+  display: flex;
   pointer-events: all;
-	/*z-index: 0;*/
-  color: #310000;
+  color: #ffffff;
+  /*z-index: 0;*/
+  will-change: text-shadow;
+  transition: text-shadow 250ms;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 45px;
 }
 
-body {
-  margin: 0px;
+a:hover{
+  /*text-shadow: 1px 1px 1px #1a1a1a;*/
+  filter: drop-shadow(1px 1px 20px #000000aa);
+  color: #ffffff;
+  background-color: #1a1a1a69;
+  border-radius: 10px;
+  
 }
-
-section {
-  display: none;
+p {
+  margin-inline: 15px 0px;
 }
 /*
-input[name=pestana] {
-  display: none;
+img {
+  will-change: filter;
+  transition: filter 250ms;
+  
 }
 
-#seccion-1-box:checked ~ #seccion-1,
-#seccion-2-box:checked ~ #seccion-2 { 
-  display: block;
-}*/
+img:hover {
+  filter: drop-shadow(3px 3px 3px #000000aa);
+  cursor: pointer;
+}
+*/
+li {
+  list-style: none;
+}
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-  position: absolute;
+/* -- html -- */
+
+label {
+  color: aliceblue;
 }
 
 .Start {
@@ -50,21 +74,108 @@ input[name=pestana] {
 	z-index: 1;
 }
 
-.Header {
+header {
   display: flex;
   padding-top: 1.5%;
   padding-inline: 2% 2%;
   align-items: center;
 }
 
-.Header .Intro {
+header div {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   width: 100%;
 }
 
-.Footer {
+.Aside .oculto {
+  display: none;
+}
+
+#Menu:hover {
+  cursor: pointer;
+}
+
+.Aside {
+  height: 100%;
+  width: 250px;
+  background-color: #646cfff5;
+  position:fixed;
+  pointer-events: all;
+  border-radius: 0 2%;
+  z-index: 50;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px;
+  transition: width 0.5s ease,background-color 0.3s ease,left 0.5s ease;
+}
+
+.mini-Aside {
+  width: 100px;
+  pointer-events: all;
+  background-color: #646cfff5;
+}
+
+.Aside div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Aside span {
+  /*justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  margin-block-start: 10px;
+  padding-block-end: 10px;*/
+  padding-top: 10%;
+  opacity: 1;
+  white-space: nowrap;
+  font-size: 18px;
+  text-align: left;
+  transition: opacity 0.5s ease,width 0.5s ease;
+}
+
+.Barra span.oculto {
+  opacity: 0;
+  width: 0;
+}
+
+/*------------> Nombre de la página */
+.Barra .Lateral{
+  width: 100%;
+  height: 45px;
+  color: var(--color-texto);
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+}
+.Barra .Lateral img{
+  min-width: 50px;
+  font-size: 40px;
+  cursor: pointer;
+}
+.Barra .Lateral p{
+  margin-left: 5px;
+  font-size: 25px;
+}
+
+.Redes {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+main {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+/*.Footer {
   position:fixed;
   bottom: 0;
   text-align: center;
@@ -82,7 +193,7 @@ input[name=pestana] {
 .Footer div div {
   display: flex;
   flex-direction: column;
-}
+}*/
 
 .Load {
   width: 100%;
@@ -106,31 +217,6 @@ input[name=pestana] {
   height: 2%;
 }
 
-/*label {
-  color: white;
-}*/
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -150,6 +236,26 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* -- Personal -- */
+
+/*#menu {
+  pointer-events: all;
+}*/
+
+/* -- Dark -- */
+
+/*
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: #ffffff;
+    background-color: #212121;
+    transition: background-color 0.25s;
+  }
+}*/
+
+/* -- Light -- */
+
+/*
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -161,4 +267,10 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}*/
+
+@media screen and (max-width: 767px) {
+}
+
+@media screen and (max-width: 1023px) {
 }

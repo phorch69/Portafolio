@@ -13,50 +13,68 @@
             }
         }
     </script>
-    <script type="module" src="./src/Component/three.js"></script>
-    <!--<script type="module" src="/src/Component/main.js"></script>-->
+    <script type="module" src="./src/Component/index.js"></script>
     <title>Inicio</title>
     </head>
     <body>
         <div class="Load">
-            <label class="text-white" for="progress-bar">Cargando..</label>
+            <label for="progress-bar">Cargando..</label>
             <progress id="progress-bar" value="0" max="100"></progress>
         </div>
         <div class="Start">
-            <header class="Header">
-                <div>III</div>
-                <div class="Intro">
+            <aside class="Aside">
+                <div>
+                    <img id="Menu" src="/public/logo/Logo-Tranparente.png" alt="" height="60px">
+                </div>
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="https://github.com/phorch69" target="_blank">
+                                <img src="/public/logo/github.svg" alt="GitHub" width="30px">
+                                <p>GitHub</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/phorch69/" target="_blank">
+                                <img src="/public/logo/linkedin.svg" alt="LinkedIn" width="30px">
+                                <p>LinkedIn</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/@phorch69" target="_blank">
+                                <img src="/public/logo/youtube.svg" alt="YouTube" width="30px">
+                                <p>YouTube</p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div>
+                    <p>Desarrollado por <a href="https://www.linkedin.com/in/phorch69/">Matias S A (phorch69)</a></p>
+                    <p>Desarrollando en <a href="https://github.com/phorch69/Portafolio">Portfolio</a></p>
+                    <p>Desarrollado con <a href="https://vitejs.dev/">Vite.js</a></p>
+                    <p>Desarrollado con <a href="https://threejs.org/">Three.js</a></p>
+                    <p>&copy;2024. Todos los derechos reservados.</p>
+                    <p>Versión Beta 1.0.0</p>
+                </div>
+            </aside>
+            <header>
+                <!--<div class="Menu">
+                    <img src="/public/logo/list.svg" alt="" width="25">
+                    <img src="/public/logo/x-lg.svg" alt="" width="25">
+                </div>-->
+                <div>
                     <img src="/public/logo/Logo-Tranparente.png" alt="" height="50px">
                     <p>phorch69</p>
                 </div>
             </header>
-            <main></main>
-            <footer class="Footer">
-                <p>©2024. Todos los derechos reservados.</p>
-                <p>Versión Beta 1.0.0</p>
-                <div>
-                    <div>
-                        <p>
-                            <a href="#" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/GitHub_Invertocat_Logo.svg/40px-GitHub_Invertocat_Logo.svg.png" alt="GitHub"></a>
-                        </p>
-                        <p>
-                            <a href="#" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/LinkedIn_Logo_%28with_%C2%AE%29.svg/100px-LinkedIn_Logo_%28with_%C2%AE%29.svg.png" alt="LinkedIn"></a>
-                        </p>
-                        <p>
-                            <a href="#" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/40px-YouTube_full-color_icon_%282017%29.svg.png" alt="YouTube"></a>
-                        </p>
-                    </div>
-                    <div>
-                        <p>Desarrollado por <a href="https://www.linkedin.com/in/phorch69/">Matias S A (phorch69)</a></p>
-                        <p>Desarrollando en <a href="https://github.com/phorch69/Portafolio">Portfolio</a></p>
-                    </div>
-                    <div>
-                        <p>Desarrollado con <a href="https://vitejs.dev/">Vite.js</a></p>
-                        <p>Desarrollado con <a href="https://threejs.org/">Three.js</a></p>
-                    </div>
-                </div>
-            </footer>
+            <main>
+                <h2>Pagina de Inicio</h2>
+                <h4>Intro</h4>
+                <p>Bienvenido</p>
+            </main>
+            <!--<footer class="Footer"></footer>-->
         </div>
         <div id="container"></div>
+        <script src="/src/Component/Action.js"></script>
     </body>
 </html>

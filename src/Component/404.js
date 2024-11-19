@@ -7,6 +7,7 @@ import Stats from 'three/addons/libs/stats.module.js';
 //import { FirstPersonControls } from 'three/addons/controls/FirstPersonControls.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+//import { STLExporter } from 'three/addons/exporters/STLExporter.js';
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 //import { UltraHDRLoader } from 'three/addons/loaders/UltraHDRLoader.js';
 //import { EXRLoader } from 'three/addons/loaders/EXRLoader.js';
@@ -32,9 +33,6 @@ const Moon = document.querySelector(".Moon");
 let EstadoSol = 1.5;
 let ElevaSol = 4;
 let GiroSol = 180;
-
-//Iliminacion
-let DireccionLuz = 5;
 
 Menu.addEventListener('click', function() {
     //Forma 1
@@ -65,14 +63,10 @@ Background.addEventListener('click', function() {
 	ElevaSol = ElevaSol === 4 ? -2 : 4;
 	GiroSol = GiroSol === 180 ? 0 : 180;
 
-	DireccionLuz = DireccionLuz === 5 ? 0 : 5;
-
 	//Devuelve el Nuevo Valor a la Funcion que se le esta Llamando
 	return SunGlobal(EstadoSol)
 	return SunGlobal(ElevaSol)
 	return SunGlobal(GiroSol)
-
-	return Ilumination(DireccionLuz)
 });
 
 
@@ -83,9 +77,13 @@ let DracoLoader, Loader, Models;
 let zoom, Manager, ProgresBar, Load, Start;
 let light, Sun, SkySun;
 let water;
+let INTERSECTED, raycaster;
 //let controls, Clock, HDRLoader, textGeo, renderTarget;
 
 var url = 'https://drive.google.com/uc?export=download&id=1Uqlm3rr6nmCmfeeRa8LrDf_QUeodEWlL';
+var Texture_1 = 'https://drive.google.com/uc?export=download&id=1xFESLmYUX1E0-xJEb1sR-jIDW9WntK6M';
+
+const pointer = new THREE.Vector2();
 
 init ();
 
@@ -129,6 +127,10 @@ function Camera() {
 }
 
 function render() {
+	//render Pointer
+	raycaster = new THREE.Raycaster();
+
+	//render
 	renderer = new THREE.WebGLRenderer();
 	renderer.setSize( window.innerWidth, window.innerHeight );
 	renderer.setAnimationLoop( animate );
@@ -141,7 +143,38 @@ function render() {
 	renderer.shadowMap.enabled = true;
 	renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
+	//render Pointer
+	RenderUpdate()
+
 	//container.appendChild( stats.dom );
+}
+
+function RenderUpdate() {
+	// find intersections
+
+	raycaster.setFromCamera( pointer, camera );
+
+	const intersects = raycaster.intersectObjects( scene.children, false );
+
+	if ( intersects.length > 0 ) {
+
+		if ( INTERSECTED != intersects[0].water ) {
+
+			if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
+
+			INTERSECTED = intersects[0].water;
+			INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
+			INTERSECTED.material.emissive.setHex( 0xff0000 );
+
+		}
+
+	} else {
+
+		if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
+
+		INTERSECTED = null;
+
+	}
 }
 
 function onWindowResize() {
@@ -157,6 +190,9 @@ function Animacion () {
 	//Control
 	/*Clock = new THREE.Clock();
 	controls.update( Clock.getDelta() );*/
+	//Pointer
+	//document.body.appendChild( stats.dom );
+	document.addEventListener( 'mousemove', onPointerMove );
 }
 
 function animate() {
@@ -197,7 +233,9 @@ function LoadingManager() {
 //Movimiento de la camara con mouse
 function Zoom() {
 	zoom = new OrbitControls(camera, renderer.domElement);
-	zoom.autoRotate = true;
+	/*zoom.autoRotate = true;
+	zoom.autoRotateSpeed = 0.2;*/
+	zoom.autoRotate = false;
 	zoom.zoomSpeed = 3;
 	zoom.minDistance = 7;
 	zoom.maxDistance = 55;
@@ -213,7 +251,7 @@ function Oceano() {
 		{
 		textureWidth: 512,
 		textureHeight: 512,
-		waterNormals: new THREE.TextureLoader().load( '/public/models/Texturas/Mar.jpg', function ( texture ) {
+		waterNormals: new THREE.TextureLoader().load( Texture_1, function ( texture ) {
 
 			texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
 
@@ -288,6 +326,20 @@ function Loader3d () {
 	DracoLoader.setDecoderConfiguration({type: 'js'});
 	Loader.setDRACOLoader(DracoLoader);*/
 
+	/*Loader = new GLTFLoader(Manager);
+	Loader.setDRACOLoader( DracoLoader );
+	Loader.load( '/public/models/gltf/Cubo/Cubo-Textura.gltf', function ( gltf ) {
+		Models = gltf.scene
+		Models.position.set( 0, 0.3, 0 );
+		Models.scale.set( 8, 0.1, 8 );
+		scene.add( Models );
+		//gltf.animations; // Array<THREE.AnimationClip>
+		//gltf.scene; // THREE.Group
+		//gltf.scenes; // Array<THREE.Group>
+		//gltf.cameras; // Array<THREE.Camera>
+		//gltf.asset; // Object
+	})*/
+
 	Loader = new GLTFLoader(Manager);
 	Loader.setDRACOLoader( DracoLoader );
 	Loader.load( url, function ( gltf ) {
@@ -307,9 +359,17 @@ function Loader3d () {
 
 function Ilumination() {
 	const Ambient = new THREE.AmbientLight( 0xffffff, 0.1 ); // soft white light
-	const light = new THREE.DirectionalLight( 0xffffff, DireccionLuz );
+	const light = new THREE.DirectionalLight( 0xffffff, 5 );
 	light.position.set( 0, 10, 0 );
 	scene.add( Ambient, light );
+}
+
+//Pointer
+function onPointerMove( event ) {
+
+	pointer.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+	pointer.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+
 }
 
 // <-- Funciones extras que no se usaran en este proyecto. Pero quedan de Muesta -->

@@ -81,6 +81,7 @@ let INTERSECTED, raycaster;
 //let controls, Clock, HDRLoader, textGeo, renderTarget;
 
 var url = 'https://drive.google.com/uc?export=download&id=1Uqlm3rr6nmCmfeeRa8LrDf_QUeodEWlL';
+var Texture_1 = 'https://drive.google.com/uc?export=download&id=1xFESLmYUX1E0-xJEb1sR-jIDW9WntK6M';
 
 const pointer = new THREE.Vector2();
 
@@ -250,7 +251,7 @@ function Oceano() {
 		{
 		textureWidth: 512,
 		textureHeight: 512,
-		waterNormals: new THREE.TextureLoader().load( '/public/models/Texturas/Mar.jpg', function ( texture ) {
+		waterNormals: new THREE.TextureLoader().load( Texture_1, function ( texture ) {
 
 			texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
 

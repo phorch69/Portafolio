@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/public/logo/Logo-Tranparente.png" type="image/x-icon">
+    <link rel="stylesheet" href="/index.css" type="text/css">
+    <title>Error 404</title>
+</head>
+<body>
+    <div class="Load">
+        <label for="progress-bar">Cargando..</label>
+        <progress id="progress-bar" value="0" max="100"></progress>
+    </div>
+    <div class="Start">
+        <section class="Detalles">
+            <ul>
+                <li>
+                    <p>Desarrollando en <a href="https://github.com/phorch69/Portafolio">Portfolio</a></p>
+                </li>
+            </ul>
+            <div class="Imagen">
+                <img src="" alt="Portada">
+            </div>
+            <div class="Informacion">
+                <h3>Información Personal</h3>
+                <p>
+                    Nací en Buenos Aires, Argentina. <br>
+                    Me gusta mucho la música, la programacion <br>
+                    ademas de la creacion modelos 3D y usar arduino.
+                </p>
+            </div>
+            <div class="Contacto">
+                <h3>Contacto</h3>
+                <p></p>
+            </div>
+            <div class="Redes"></div>
+        </section>
+        <header>
+            <h2>
+                <a href="/index.html">phorch69</a>
+            </h2>
+            <div>
+                <div id="Background">
+                    <img class="Day" src="/public/logo/brightness-high.svg" alt="Day" width="30">
+                    <img class="Moon" src="/public/logo/moon.svg" alt="Moon" width="30">
+                </div>
+                <nav class="Nav">
+                    <a href="https://www.youtube.com/@phorch69" target="_blank">
+                        <img src="/public/logo/youtube.svg" alt="YouTube" width="30px">
+                    </a>
+                    <a href="https://www.linkedin.com/in/phorch69/" target="_blank">
+                        <img src="/public/logo/linkedin.svg" alt="LinkedIn" width="30px">
+                    </a>
+                    <a href="https://github.com/phorch69" target="_blank">
+                        <img src="/public/logo/github.svg" alt="GitHub" width="30px">
+                    </a>
+                    <a href="https://www.instagram.com/phorch69" target="_blank">
+                        <img src="/public/logo/instagram.svg" alt="Instagram" width="30px">
+                    </a>
+                    <a href="https://www.tiktok.com/@phorch69" target="_blank">
+                        <img src="/public/logo/tiktok.svg" alt="Tiktok" width="30px">
+                    </a>
+                    <a href="https://cults3d.com/@phorch69" target="_blank">
+                        <img src="/public/logo/badge-3d.svg" alt="cults3d" width="30px">
+                    </a>
+                </nav>
+                <div id="Menu">
+                    <img class="Img-III" src="/public/logo/list.svg" alt="" width="30">
+                    <img class="Img-X" src="/public/logo/x-lg.svg" alt="" width="30">
+                </div>
+            </div>
+        </header>
+        <main>
+            <h1>Pagina no Encontrada</h1>
+            <h2>Ups, parece que algo salio mal.</h2>
+            <p>La página que buscas no se encuentra disponible.</p>
+            <p>Por favor, intenta buscar nuevamente o contacta con el administrador del sitio.</p>
+            <a href="/index.html">Volver al inicio</a>
+            <a href="javascript:history.back()">Volver a la página anterior</a>
+            <p>Si el problema persiste, contacta con el administrador del sitio.</p>
+        </main>
+        <footer class="Footer">
+            <h6>
+                &copy;2024. Todos los derechos reservados. <br>
+                Creado y Desarrollado por <a href="https://www.linkedin.com/in/phorch69/">Matias S A (phorch69)</a>
+            </h6>
+        </footer>
+    </div>
+    <div id="container"></div>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@v0.169.0/build/three.module.js",
+                "three/addons/": "https://cdn.jsdelivr.net/npm/three@v0.169.0/examples/jsm/"
+            }
+        }
+    </script>
+    <script type="module" src="/src/Component/404.js"></script>
+</body>
+</html>
